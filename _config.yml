@@ -13,12 +13,13 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Exploring machine translation with MOSES
+title: Exploring machine translation
 email: garyhess999@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  A home for my explorations of machine translation, 
-  e.g. installing, configuring and test Moses SMT and 
-  some open-source neural machine translation (NMT) systems.
+  This is the home for my machine translation (MT) studies. Topics include 
+  installing and configuring Moses SMT as well as analysis of Moses translation
+  output from a human-translator perspective. I also hope to test an open-source 
+  neural machine translation (NMT) system.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
