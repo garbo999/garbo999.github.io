@@ -16,7 +16,7 @@ French:
 English: 
 > bring activists on the ground and convince that the vote is useful .
 
-This is the example sentence from the [Moses baseline system][MBS]. Actually, it is a sentence fragment and not a proper sentence. It is worth including to make sure that my baseline system produces the same output as the system described online.
+This is the example sentence from the [Moses baseline system][MBS]. Actually, it is a sentence fragment and not a proper sentence. I included it to make sure that my baseline system produces the same output as the system described online.
 
 ### Example 2
 
@@ -37,6 +37,7 @@ English:
 > François Bayrou , the new Minister of justice , had taken the day his appointment “ engagement ” that the bill on the moralizing public life would be on the table of the Council of Ministers before the parliamentary elections .
 
 Now that I actually understand this sentence (searching [Linguee] for *la moralisation de la vie publique* pulls up plenty of odd human translations), the machine translation seems almost comprehensible. 
+
 My translation: *On the day of his appointment, the new Justice Minister François Bayrou committed himself to ensuring that the law on accountability in public life would be on the table Council of Ministers before the parliamentary elections.*
 
 ### Example 4
@@ -49,7 +50,7 @@ English:
 
 Funny to see *Emmanuel* translated (*Immanuel*). Proper nouns cause many headaches for MT. *quinquennat* looks very out of place. I translated it as *5-year term*.
 
-My translation (maybe not entirely precise due to my ignorance of French political life): *The outline of this seminal reform for Emmanuel Macron's 5-year term is now set after a final arbitration meeting between the President of the Republic and and his Prime Minister, Edouard Philippe on Sunday 28 May.*
+My translation (maybe incorrect due to my ignorance of French political life): *The outline of this seminal reform for Emmanuel Macron's 5-year term is now set after a final arbitration meeting between the President of the Republic and and his Prime Minister, Edouard Philippe on Sunday 28 May.*
 
 ### Example 5
 
@@ -59,7 +60,7 @@ French:
 English: 
 > As the case Ferrand comes confuse the message gouvernemental, the Justice Minister prefers to keep silent for the moment .
 
-The beginning is a awkward but this is mostly understandable. 
+The beginning is awkward but this is mostly understandable. 
 
 My translation: *With the Ferrand affair blurring the government's message, the Justice Minister prefers to keep silent for the moment.*
 
@@ -86,6 +87,10 @@ English:
 This is an ugly translation with mistakes and common words left untranslated. I doubt whether the output is understandable without a knowledge of French. My translation: *On the eve of the presidential election, a group of journalists from Le Monde revisit places that shaped their youth to provide first-person accounts of the transformation of the France they knew when they were little.* 
 
 Just what *petite France* means here is hard to tell without more context, but I assume it is not a neighborhood in Strasbourg. Could a computer ever come up with a reasonable translation of such a complex sentence?
+
+### Summary
+
+All in all, I think it is not a bad result for a small MT engine. Now I am curious to see what I can do with a larger data set.
 
 [MBS]: http://www.statmt.org/moses/?n=Moses.Baseline
 [Linguee]: http://www.linguee.com/english-french/search?source=auto&query=moralisation+de+la+vie+publique
