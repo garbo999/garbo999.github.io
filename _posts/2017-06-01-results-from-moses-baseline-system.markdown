@@ -4,7 +4,7 @@ title:  "MT output from the Moses baseline system"
 date:   2017-06-01 18:21:00 +0300
 categories: moses
 ---
-I now have the [Moses baseline system][MBS] working on a small virtual machine (8 GB RAM and 2 cores). I was interested to see just how well an MT engine of this sort (trained with only about 130k sentence pairs) would work on real-world data. For my test, I randomly picked a selection of French sentences from current online news and translated them with the baseline system. Here are the results (along with some corrections and comments).
+I now have the [Moses baseline system][MBS] working on a small virtual machine (8 GB RAM and 2 cores). I was interested to see just how well an MT engine of this sort (trained with only about 130k sentence pairs) would work on real-world data. For my test, I randomly picked a selection of French sentences from online news and translated them with the baseline system. Here are the results (along with some corrections and comments).
 
 Note that the baseline system requires an input sentence that is slightly edited from the normal human sentence. For example, punctuation is treated as separate words, so *l'article* (which I normally think of as two words) becomes three separate words: *l ' article*.
 
@@ -36,9 +36,9 @@ French:
 English: 
 > François Bayrou , the new Minister of justice , had taken the day his appointment “ engagement ” that the bill on the moralizing public life would be on the table of the Council of Ministers before the parliamentary elections .
 
-Now that I actually understand this sentence (searching [Linguee] for *la moralisation de la vie publique* pulls up plenty of odd human translations), the machine translation seems almost comprehensible. 
+Now that I actually understand this sentence (searching [Linguee] for *la moralisation de la vie publique* pulls up plenty of odd human translations), the machine translation seems almost comprehensible. I have to wonder why *l’engagement* is in quotes.
 
-My translation: *On the day of his appointment, the new Justice Minister François Bayrou committed himself to ensuring that the law on accountability in public life would be on the table Council of Ministers before the parliamentary elections.*
+My translation: *On the day he was appointed, the new Justice Minister François Bayrou "committed" to ensuring that the law on accountability in public life is on the table of the Council of Ministers prior to the parliamentary elections.*
 
 ### Example 4
 
@@ -48,7 +48,7 @@ French:
 English: 
 > The perimeter reform of the founding of quinquennat of Immanuel Macron is now set after a last meeting of trade-off between the president of the Republic and his first ministre, Edouard Philippe, Sunday 28 May .
 
-Funny to see *Emmanuel* translated (*Immanuel*). Proper nouns cause many headaches for MT. *quinquennat* looks very out of place. I translated it as *5-year term*.
+Funny to see *Emmanuel* translated (*Immanuel*). Proper nouns cause many headaches for MT. *quinquennat* looks very out of place. I translated it as *5-year term*. I don't think this MT output is understandable without seeing the French.
 
 My translation (maybe incorrect due to my ignorance of French political life): *The outline of this seminal reform for Emmanuel Macron's 5-year term is now set after a final arbitration meeting between the President of the Republic and and his Prime Minister, Edouard Philippe on Sunday 28 May.*
 
@@ -74,7 +74,7 @@ English:
 
 This translation seems nearly comprehensible. One problem that stands out is *to prepare for the better*.
 
-My translation: *15 days before their baccalauréat examination, candidates can talk live with teachers of different subjects via Facebook Live and chat in order to better prepare for the exam.*
+My translation: *15 days before their baccalauréat examination, candidates can talk to teachers of different subjects via Facebook Live and chat in order to better prepare for the exam.*
 
 ### Example 7
 
@@ -84,9 +84,11 @@ French:
 English: 
 > On the eve of the presidency , journalists , the “ World ” revisitent the places that have marked their youth to tell , to the first personne, how their “ small ” France became .
 
-This is an ugly translation with mistakes and common words left untranslated. I doubt whether the output is understandable without a knowledge of French. My translation: *On the eve of the presidential election, a group of journalists from Le Monde revisit places that shaped their youth to provide first-person accounts of the transformation of the France they knew when they were little.* 
+This is an ugly translation with mistakes and some common words left untranslated. I doubt whether the output is understandable without a knowledge of French. 
 
 Just what *petite France* means here is hard to tell without more context, but I assume it is not a neighborhood in Strasbourg. Could a computer ever come up with a reasonable translation of such a complex sentence?
+
+My translation: *On the eve of the presidential election, a group of journalists from Le Monde revisit places that shaped their youth to provide first-person accounts of how the France they knew when they were young has been transformed.* 
 
 ### Summary
 
