@@ -12,4 +12,4 @@ Future projects:
 3. Study language models with SRILM
 4. Figure out how GIZA++ (MGIZA) really works
 5. Implement algorithms for IBM models 1 to 5
-6. Document some of the many Linux insights needed to efficiently work with Moses and related tools
+6. Document Linux tips needed to efficiently work with Moses and related tools
