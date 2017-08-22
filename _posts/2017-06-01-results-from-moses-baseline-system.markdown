@@ -84,7 +84,7 @@ French:
 English: 
 > On the eve of the presidency , journalists , the “ World ” revisitent the places that have marked their youth to tell , to the first personne, how their “ small ” France became .
 
-This is an ugly translation with mistakes and some common words left untranslated. I doubt whether the output is understandable without a knowledge of French. 
+This is an ugly translation with mistakes and some common words left untranslated. I doubt whether the output is comprehensible without understanding the French sentence. 
 
 Just what *petite France* means here is hard to tell without more context, but I assume it is not a neighborhood in Strasbourg. Could a computer ever come up with a reasonable translation of such a complex sentence?
 
