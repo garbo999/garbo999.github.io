@@ -8,7 +8,7 @@ I just finished my first complete run of the [Moses Experiment Management System
 
 Of course, there are a number of problems to overcome to get the EMS up and running the first time. All in all, it took me a couple of weeks of part-time effort to solve the initial problems, most of which came down to figuring out how to install the tools and correctly point to them (as well as correctly formatted versions of the corpora) in the configuration file ([config.toy]((/assets/misc/config.toy))).
 
-Once all of the steps have run (requiring 4:30 h in this case with 4 processors and 8 GB RAM), the final EMS step assesses how well the engine is working based on the BLEU score. Here is the initial result:
+Once all of the steps have run (requiring approx. 4:30 h in this case with 4 processors and 8 GB RAM), the final EMS step assesses how well the engine is working based on the BLEU score. Here is the initial result:
 
 {% highlight shell %}
 gary@moses:~/workspace/experiment$ cat evaluation/report.3
@@ -120,7 +120,7 @@ German:
 English: 
 > Just last December, fellow economists Martin Feldstein and Nouriel Roubini each penned op-eds bravely questioning bullish market sentiment, sensibly pointing out gold’s risks.
 
-I can't complain about these translations. I can't even say for sure which language is the source language, although `fellow economists ... each penned op-eds` sounds like such idiomatic (American?) English that I would guess that English is the source language.
+This is just one random sentence out of 178221, but I can't complain about the quality. I can't even say for sure which language is the source language, although `fellow economists ... each penned op-eds` sounds like such idiomatic (American?) English that I would guess that English is the source language.
 
 ## The language model
 
@@ -138,4 +138,6 @@ order = 5
 raw-corpus = $toy-data/news-commentary-v8.de-en.$output-extension
 {% endhighlight %}
 
-One important detail is that the language model is normally based on a DIFFERENT set of sentences than the parallel corpus. Here, I have defined the language model based on the SAME file as the parallel corpus (`news-commentary-v8.de-en.en`)! Since this clearly looks like a mistake, I am going to rerun my experiment and compare the results.
+~~One important detail is that the language model is normally based on a DIFFERENT set of sentences than the parallel corpus. Here, I have defined the language model based on the SAME file as the parallel corpus (`news-commentary-v8.de-en.en`)! Since this clearly looks like a mistake, I am going to rerun my experiment and compare the results.~~ 
+
+Hmmmmmm, closer examination of the sample EMS configuration files provided in `mosesdecoder/scripts/ems/example/` suggests this last statement is incorrect. I am going to move forward now and look for other problems (of which there appear to be plenty).
