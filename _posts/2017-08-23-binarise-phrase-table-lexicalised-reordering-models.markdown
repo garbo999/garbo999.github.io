@@ -66,7 +66,7 @@ The only phrase table here is `phrase-table.1.gz` and not `phrase-table.1`. In f
 
 The key is that the phrase table needs to be converted into another format so it can be partially read into memory. This is explained [here](http://www.statmt.org/moses/?n=Moses.Baseline) (under *Testing*) and [here](http://www.statmt.org/moses/?n=Advanced.RuleTables#ntoc3) (under *Compact Phrase Table*).
 
-To make this step, I need to compile Moses with the `--with-cmph` option since a quick check with `moses -h` shows that *PhraseDictionaryCompact* is missing from the available *Available feature functions*. 
+To make this step, I had to recompile Moses with the `--with-cmph` option since a quick check with `moses -h` shows that *PhraseDictionaryCompact* is missing from the available *Available feature functions*. 
 
 {% highlight shell %}
 gary@moses:~/workspace$ ./mosesdecoder/bin/moses -h
@@ -77,10 +77,77 @@ BleuScoreFeature ConstrainedDecoding ControlRecombination CorrectionPattern Coun
 
 Note: It is necessary to install the [cmph](http://cmph.sourceforge.net/) hashing library before compiling Moses.
 
-Here is the command I used to compile Moses (I had to add the `-a` because otherwise Moses was compiled without the cmph library; I found that suggestion [here](http://thread.gmane.org/gmane.comp.nlp.moses.user/13854), but I am not sure why it works):
+Here is the command I used to compile Moses (I had to add the `-a` option because otherwise Moses was compiled without the cmph library; I found that suggestion [here](http://moses-support.mit.narkive.com/9UOIYHZZ/phrasedictionarycompact-problem), but I am not sure why it works):
 
 {% highlight shell %}
-./bjam -a --with-boost=/home/gary/workspace/boost_1_60_0 --with-srilm=/home/gary/workspace/srilm --with-cmph=/home/gary/workspace/cmph/cmph-2.0 -j4
+./bjam -a --with-boost=/home/gary/workspace/boost_1_60_0  
+  \ --with-srilm=/home/gary/workspace/srilm 
+  \ --with-cmph=/home/gary/workspace/cmph/cmph-2.0 -j4
 {% endhighlight %}
 
-Now I need to convert my monster phrase table to the compact format.
+Now I need to convert my monster phrase table to the compact format. Here are the commands I used:
+
+{% highlight shell %}
+nohup nice ~/workspace/mosesdecoder/bin/processPhraseTableMin \
+   -in ~/workspace/experiment/model/phrase-table.1.gz -nscores 4 \
+   -out ~/workspace/experiment/model/phrase-table
+{% endhighlight %}
+
+Note that `nohup nice` is good to use here in case the conversion takes a long time and the shell connecting to the remote server crashes. The conversion process continues in the background even if the shell is closed.
+
+Next comes a similar conversion for the reordering table:
+
+{% highlight shell %}
+nohup nice ~/workspace/mosesdecoder/bin/processLexicalTableMin \
+   -in ~/workspace/experiment/model/reordering-table.1.wbe-msd-bidirectional-fe.gz \
+   -out ~/workspace/experiment/model/reordering-table
+{% endhighlight %}
+
+The next question I had was which `moses.ini` file to use (since the EMS generated several plausible files). A quick [question on the mailing list](https://www.mail-archive.com/moses-support@mit.edu/msg15552.html) suggested that `./tuning/moses.tuned.ini.3` is correct (or `./tuning/moses.tuned.ini.1`, which must have come from an earlier tuning run).
+
+So now I modify `./tuning/moses.tuned.ini.3` as described [here](http://www.statmt.org/moses/?n=Moses.Baseline) under *Testing*:
+
+{% highlight shell %}
+nohup nice ~/workspace/mosesdecoder/bin/processLexicalTableMin \
+   -in ~/workspace/experiment/model/reordering-table.1.wbe-msd-bidirectional-fe.gz \
+   -out ~/workspace/experiment/model/reordering-table
+{% endhighlight %}
+
+Now I can try to translates some German sentences into English by running the decoder:
+
+{% highlight shell %}
+~/workspace/mosesdecoder/bin/moses -f ~/workspace/experiment/tuning/moses.tuned.ini.3
+~/workspace/mosesdecoder/bin/moses -tt -f ~/workspace/experiment/tuning/moses.tuned.ini.3
+{% endhighlight %}
+
+Here are a few sample sentences from online news in German. Clearly I need to try with a larger parallel corpus as my next step.
+
+### Example 1
+
+German: 
+> 96 Prozent der Muslime fühlen sich Deutschland verbunden
+
+English: 
+> 96 % of the Muslims feel connected Germany
+
+### Example 2
+
+German: 
+> Wanderer nach gewaltigem Bergsturz in der Schweiz vermisst
+
+English: 
+> Wanderer after massive Bergsturz in Switzerland missing
+
+### Example 3
+
+German: 
+> Ein gewaltiger Felsabbruch hat acht Deutsche, Österreicher und Schweizer beim Wandern in den Schweizer Alpen überrascht.
+
+English: 
+> One powerful Felsabbruch has eight Germans, Austrians, and Swiss in Wandern in the Swiss Alps by surprise.
+
+
+
+
+
+
