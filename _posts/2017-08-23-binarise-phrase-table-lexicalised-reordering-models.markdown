@@ -44,6 +44,8 @@ Can't read /home/gary/workspace/experiment/model/phrase-table.1
 
 The error message at the end is `Can't read /home/gary/workspace/experiment/model/phrase-table.1`.
 
+Here is a look at the directory in question (`~/workspace/experiment/model/`).
+
 {% highlight shell %}
 gary@moses-working-6aug17-8gb-fra1-01:~/workspace/experiment$ ll model/
 total 568492
@@ -62,7 +64,7 @@ drwxrwxr-x 10 gary gary      4096 Aug 23 10:41 ../
 
 The only phrase table here is `phrase-table.1.gz` and not `phrase-table.1`. In fact, it is a monster file with about 192 MB! 
 
-The key here is that the phrase table needs to be converted into another format so it can be partially read into memory ([as explained here under *Testing*](http://www.statmt.org/moses/?n=Moses.Baseline) as well as [here under *Compact Phrase Table*](http://www.statmt.org/moses/?n=Advanced.RuleTables#ntoc3)).
+The key is that the phrase table needs to be converted into another format so it can be partially read into memory. This is explained [here](http://www.statmt.org/moses/?n=Moses.Baseline) (under *Testing*) and [here](http://www.statmt.org/moses/?n=Advanced.RuleTables#ntoc3) (under *Compact Phrase Table*).
 
 To make this step, I need to compile Moses with the `--with-cmph` option since a quick check with `moses -h` shows that *PhraseDictionaryCompact* is missing from the available *Available feature functions*. 
 
