@@ -7,8 +7,8 @@ categories: moses
 ## Reference links
 
 #### Moses
-* [Moses resource center](http://www.statmt.org/moses/index.php?n=Main.HomePage)
-* [*moses-support* mailing list w/ search function](https://www.mail-archive.com/moses-support@mit.edu/)
+* [Moses resource center](http://www.statmt.org/moses/index.php?n=Main.HomePage) (vast collection of SMT resources)
+* [moses-support](https://www.mail-archive.com/moses-support@mit.edu/) (mailing list w/ search function)
 
 #### SRILM
 * [SRI Language Modeling Toolkit: main page](http://www.speech.sri.com/projects/srilm/)

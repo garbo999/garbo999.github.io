@@ -6,7 +6,7 @@ categories: moses
 ---
 ## Current priorities
 
-Now that I have got the [EMS running](http://127.0.0.1:4000/moses/2017/08/21/first-complete-run-moses-experiment-management-system.html), I am hoping to move forward with some more interesting experiments. Here are some of the things I want to get done this week:
+Now that I have got the [EMS running]({% post_url 2017-08-21-first-complete-run-moses-experiment-management-system %}), I am hoping to move forward with some more interesting experiments. Here are some of the things I want to get done this week:
 
 * Run the EMS with a larger German-English data set
 
@@ -14,7 +14,7 @@ Now that I have got the [EMS running](http://127.0.0.1:4000/moses/2017/08/21/fir
 
 * Get the EMS graph generation working 
 
-  The graphics are the last piece of the EMS that is not working as of today. The problem must be related to the fact that my test machine doesn't have a GUI (Ubuntu Server).
+  The graphics are the last piece of the EMS that is not working as of today. The problem must be related to the fact that my test machine doesn't have a GUI (Ubuntu Server). ([DONE!]({% post_url 2017-08-29-ems-graphics %}))
 
 * Set up the EMS web interface
 
@@ -22,5 +22,5 @@ Now that I have got the [EMS running](http://127.0.0.1:4000/moses/2017/08/21/fir
 
 * Try out Moses server and see if it can interface with SDL Trados 2017
 
-  I am going to a [post-editing class](http://aticom.de/aktuelle-termine/workshop-pe-mue-apps./) next week in Düsseldorf hosted by [ATICOM](http://aticom.de/) and I am hoping to get this done beforehand.
+  I am going to a [post-editing class](http://aticom.de/aktuelle-termine/workshop-pe-mue-apps./) next week in Düsseldorf hosted by [ATICOM](http://aticom.de/) and I am hoping to get this done ~~beforehand~~ relatively soon.
 
