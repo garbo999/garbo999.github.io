@@ -14,7 +14,7 @@ Now that I have got the [EMS running]({% post_url 2017-08-21-first-complete-run-
 
 * Get the EMS graph generation working 
 
-  The graphics are the last piece of the EMS that is not working as of today. The problem must be related to the fact that my test machine doesn't have a GUI (Ubuntu Server). ([DONE!]({% post_url 2017-08-29-ems-graphics %}))
+  The graphics are the last piece of the EMS that is not working as of today. The problem must be related to the fact that my test machine doesn't have a GUI (Ubuntu Server). ([DONE]({% post_url 2017-08-29-ems-graphics %}))
 
 * Set up the EMS web interface
 
@@ -22,5 +22,5 @@ Now that I have got the [EMS running]({% post_url 2017-08-21-first-complete-run-
 
 * Try out Moses server and see if it can interface with SDL Trados 2017
 
-  I am going to a [post-editing class](http://aticom.de/aktuelle-termine/workshop-pe-mue-apps./) next week in Düsseldorf hosted by [ATICOM](http://aticom.de/) and I am hoping to get this done ~~beforehand~~ relatively soon.
+  I am going to a [post-editing class](http://aticom.de/aktuelle-termine/workshop-pe-mue-apps./) next week in Düsseldorf hosted by [ATICOM](http://aticom.de/) and I am hoping to get this done ~~beforehand~~ relatively soon. If no one has built a Moses/SDL interface yet, it could be interested to give it a try. The SDL Translation Memory API would probably allow that.
 
