@@ -13,13 +13,15 @@ ERROR: Execution of: /home/gary/workspace/bin/training-tools/mgizapp/snt2cooc /h
   died with signal 9, without coredump
 {% endhighlight %}
 
-Although there is no explicit error message that says that Moses ran out of memory, a quick search of the [Moses mailing list](https://www.mail-archive.com/moses-support@mit.edu/msg13307.html) for `died with signal 9, without coredump` suggests that is what happened. I am going to modify my EMS config file as described there. An important note in a [follow-up message](https://www.mail-archive.com/moses-support@mit.edu/msg13308.html) is that the EMS needs to be run this time with `-continue=1` (and NOT simply restarted). Let's see if this works. Here is the modified line in the config file:
+Although there is no explicit error message that says that Moses ran out of memory, a quick search of the [Moses mailing list](https://www.mail-archive.com/moses-support@mit.edu/msg13307.html) for `died with signal 9, without coredump` suggests that is what happened. I am going to modify my EMS config file as described there. An important note in a [follow-up message](https://www.mail-archive.com/moses-support@mit.edu/msg13308.html) is that the files for the failed steps need to be deleted with e.g. `rm steps/4/TRAINING_run-giza*` and the EMS needs to be run this time with `-continue=1` (and NOT simply restarted). Here is the modified line in my config file:
 
 {% highlight shell %}
 training-options = "-mgiza -mgiza-cpus 4 -snt2cooc snt2cooc.pl"
 {% endhighlight %}
 
-By the way, Moses also updated the graphical plan of action before shutting down. Here is the latest file with the crashed steps in red (and the remaining steps in green):
+Also, I stumbled across [this discussion](https://www.mail-archive.com/moses-support@mit.edu/msg06113.html) of what the `-snt2cooc` flag means. Apparently there were a lot of memory problems with the original version of `snt2cooc` and it was replaced with a better version (which I had to manually copy to my `~/workspace/bin/training-tools/mgizapp/` directory).
+
+Finally, I noticed that Moses updated the graphical plan of action before shutting down. Here is the latest file with the crashed steps in red (and the remaining steps in green):
 
 ![Moses graphical plan of action 'graph.4.png'](/assets/img/graph.4.png)
 
