@@ -85,13 +85,15 @@ Here is the command I used to compile Moses (I had to add the `-a` option becaus
   \ --with-cmph=/home/gary/workspace/cmph/cmph-2.0 -j4
 {% endhighlight %}
 
-Now I need to convert my monster phrase table to the compact format. Here are the commands I used:
+Now I need to convert my monster phrase table to the compact format. Here is the command I used:
 
 {% highlight shell %}
 nohup nice ~/workspace/mosesdecoder/bin/processPhraseTableMin \
    -in ~/workspace/experiment/model/phrase-table.1.gz -nscores 4 \
    -out ~/workspace/experiment/model/phrase-table
 {% endhighlight %}
+
+Note: A `-threads` parameter can also be added, e.g. `-threads 4`. The full list of options is [here](http://www.statmt.org/moses/?n=Advanced.RuleTables).
 
 Note that `nohup nice` is good to use here in case the conversion takes a long time and the shell connecting to the remote server crashes. The conversion process continues in the background even if the shell is closed.
 
@@ -103,14 +105,19 @@ nohup nice ~/workspace/mosesdecoder/bin/processLexicalTableMin \
    -out ~/workspace/experiment/model/reordering-table
 {% endhighlight %}
 
+Note: Like with `processPhraseTableMin`, I also tried adding `-threads 8` for `processLexicalTableMin` and it worked.
+
 The next question I had was which `moses.ini` file to use (since the EMS generated several plausible files). A quick [question on the mailing list](https://www.mail-archive.com/moses-support@mit.edu/msg15552.html) suggested that `./tuning/moses.tuned.ini.3` is correct (or `./tuning/moses.tuned.ini.1`, which must have come from an earlier tuning run).
 
-So now I modify `./tuning/moses.tuned.ini.3` as described [here](http://www.statmt.org/moses/?n=Moses.Baseline) under *Testing*:
+So now I modify `./tuning/moses.tuned.ini.3` as described [here](http://www.statmt.org/moses/?n=Moses.Baseline) under *Testing*. The original values from `./tuning/moses.tuned.ini.3` are commented out:
 
 {% highlight shell %}
-nohup nice ~/workspace/mosesdecoder/bin/processLexicalTableMin \
-   -in ~/workspace/experiment/model/reordering-table.1.wbe-msd-bidirectional-fe.gz \
-   -out ~/workspace/experiment/model/reordering-table
+...
+# PhraseDictionaryMemory name=TranslationModel0 num-features=4 path=/home/gary/workspace/experiment/model/phrase-table.1 input-factor=0 output-factor=0
+PhraseDictionaryCompact name=TranslationModel0 num-features=4 path=/home/gary/workspace/experiment/model/phrase-table.minphr input-factor=0 output-factor=0
+...
+#LexicalReordering name=LexicalReordering0 num-features=6 type=wbe-msd-bidirectional-fe-allff input-factor=0 output-factor=0 path=/home/gary/workspace/experiment/model/reordering-table.1.wbe-msd-bidirectional-fe.gz
+LexicalReordering name=LexicalReordering0 num-features=6 type=wbe-msd-bidirectional-fe-allff input-factor=0 output-factor=0 path=/home/gary/workspace/experiment/model/reordering-table
 {% endhighlight %}
 
 Now I can try to translates some German sentences into English by running the decoder:
