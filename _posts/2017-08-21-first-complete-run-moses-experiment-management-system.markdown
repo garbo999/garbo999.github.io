@@ -4,11 +4,13 @@ title:  "First complete run of the Moses Experiment Management System (EMS)"
 date:   2017-08-21 20:46:00 +0300
 categories: moses
 ---
-I just finished my first complete run of the [Moses Experiment Management System (EMS)](http://www.statmt.org/moses/?n=FactoredTraining.EMS). Once this system is properly configured and the necessary tools are installed, it only takes a single command to build an MT engine based on a corpus of human translations (source/target files) along with a separate corpus of target language sentences. The overall processing time for my first run was about 4 hours. One huge advantage of the EMS is that if a single step fails, the results from the previous steps are automatically reused in subsequent attempts. This saves a lot of time since some of the steps can take hours to run, e.g. TRAINING:run-giza and TRAINING:run-giza-inverse (which I think are used to gather the IBM model data).
+I just finished my first complete run of the [Moses Experiment Management System (EMS)](http://www.statmt.org/moses/?n=FactoredTraining.EMS). Once this system is properly configured and the necessary tools are installed, it only takes a single command to build an MT engine based on a corpus of human translations (source/target files) along with a separate corpus of target language sentences. The overall processing time for my first run was about 4 hours. 
+
+One huge advantage of the EMS is that if a single step fails, the results from the previous steps are automatically reused in subsequent attempts. This saves a lot of time since some of the steps can take hours to run, e.g. TRAINING:run-giza and TRAINING:run-giza-inverse (which I think are used to gather the IBM model data).
 
 Of course, there are a number of problems to overcome to get the EMS up and running the first time. All in all, it took me a couple of weeks of part-time effort to solve the initial problems, most of which came down to figuring out how to install the tools and correctly point to them (as well as correctly formatted versions of the corpora) in the configuration file ([config.toy]((/assets/misc/config.toy))).
 
-Once all of the steps have run (requiring approx. 4:30 h in this case with 4 processors and 8 GB RAM), the final EMS step assesses how well the engine is working based on the BLEU score. Here is the initial result:
+Once all of the steps have run (4:30 h in this case with 4 processors and 8 GB RAM), the final EMS step assesses how well the engine is working based on the BLEU score. Here is the initial result:
 
 {% highlight shell %}
 gary@moses:~/workspace/experiment$ cat evaluation/report.3
