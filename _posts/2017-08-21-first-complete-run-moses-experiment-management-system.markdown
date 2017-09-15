@@ -143,3 +143,5 @@ raw-corpus = $toy-data/news-commentary-v8.de-en.$output-extension
 ~~One important detail is that the language model is normally based on a DIFFERENT set of sentences than the parallel corpus. Here, I have defined the language model based on the SAME file as the parallel corpus (`news-commentary-v8.de-en.en`)! Since this clearly looks like a mistake, I am going to rerun my experiment and compare the results.~~ 
 
 Hmmmmmm, closer examination of the sample EMS configuration files provided in `mosesdecoder/scripts/ems/example/` suggests this last statement is incorrect. I am going to move forward now and look for other problems (of which there appear to be plenty).
+
+Here is the [follow-up to this post]({% post_url 2017-08-23-binarise-phrase-table-lexicalised-reordering-models %}).

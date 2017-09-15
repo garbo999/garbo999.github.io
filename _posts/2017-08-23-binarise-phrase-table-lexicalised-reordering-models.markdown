@@ -4,7 +4,7 @@ title:  "Binarise phrase table and lexicalised reordering models"
 date:   2017-08-23 15:11:01 +0300
 categories: moses
 ---
-After running the Experiment Management System for the 1st time, I wanted to translate ("decode") some German sentences to see with my own eyes how well my MT engine is working. Here I got an error when attempting to run the Moses decoder:
+After running the Experiment Management System for the 1st time (see [here]({% post_url 2017-08-21-first-complete-run-moses-experiment-management-system %})), I wanted to translate ("decode") some German sentences to see with my own eyes how well my new MT engine is working. However, I immediately an error when attempting to run the Moses decoder:
 
 {% highlight shell %}
 gary@moses:~/workspace/experiment$ ~/workspace/mosesdecoder/bin/moses -tt -f ~/workspace/experiment/tuning/moses.tuned.ini.3
@@ -64,6 +64,8 @@ drwxrwxr-x 10 gary gary      4096 Aug 23 10:41 ../
 
 The only phrase table here is `phrase-table.1.gz` and not `phrase-table.1`. In fact, it is a monster file with about 192 MB! 
 
+### Compact phrase table
+
 The key is that the phrase table needs to be converted into another format so it can be partially read into memory. This is explained [here](http://www.statmt.org/moses/?n=Moses.Baseline) (under *Testing*) and [here](http://www.statmt.org/moses/?n=Advanced.RuleTables#ntoc3) (under *Compact Phrase Table*).
 
 To make this step, I had to recompile Moses with the `--with-cmph` option since a quick check with `moses -h` shows that *PhraseDictionaryCompact* is missing from the available *Available feature functions*. 
@@ -109,7 +111,7 @@ Note: Like with `processPhraseTableMin`, I also tried adding `-threads 8` for `p
 
 The next question I had was which `moses.ini` file to use (since the EMS generated several plausible files). A quick [question on the mailing list](https://www.mail-archive.com/moses-support@mit.edu/msg15552.html) suggested that `./tuning/moses.tuned.ini.3` is correct (or `./tuning/moses.tuned.ini.1`, which must have come from an earlier tuning run).
 
-So now I modify `./tuning/moses.tuned.ini.3` as described [here](http://www.statmt.org/moses/?n=Moses.Baseline) under *Testing*. The original values from `./tuning/moses.tuned.ini.3` are commented out:
+So now I modify `./tuning/moses.tuned.ini.3` as described [here](http://www.statmt.org/moses/?n=Moses.Baseline) under *Testing* (and remembering to also change `PhraseDictionaryMemory` to `PhraseDictionaryCompact`). The original values from `./tuning/moses.tuned.ini.3` are commented out:
 
 {% highlight shell %}
 ...
@@ -129,7 +131,7 @@ Now I can try to translates some German sentences into English by running the de
 
 Here are a few sample sentences from online news in German. Clearly I need to try with a larger parallel corpus as my next step.
 
-### Example 1
+#### Example 1
 
 German: 
 > 96 Prozent der Muslime fühlen sich Deutschland verbunden
@@ -137,7 +139,7 @@ German:
 English: 
 > 96 % of the Muslims feel connected Germany
 
-### Example 2
+#### Example 2
 
 German: 
 > Wanderer nach gewaltigem Bergsturz in der Schweiz vermisst
@@ -145,7 +147,7 @@ German:
 English: 
 > Wanderer after massive Bergsturz in Switzerland missing
 
-### Example 3
+#### Example 3
 
 German: 
 > Ein gewaltiger Felsabbruch hat acht Deutsche, Österreicher und Schweizer beim Wandern in den Schweizer Alpen überrascht.
