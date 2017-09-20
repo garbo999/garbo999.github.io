@@ -4,7 +4,7 @@ title:  "Binarise phrase table and lexicalised reordering models"
 date:   2017-08-23 15:11:01 +0300
 categories: moses
 ---
-After running the Experiment Management System for the 1st time (see [here]({% post_url 2017-08-21-first-complete-run-moses-experiment-management-system %})), I wanted to translate ("decode") some German sentences to see with my own eyes how well my new MT engine is working. However, I immediately an error when attempting to run the Moses decoder:
+After running the Experiment Management System for the 1st time (see [here]({% post_url 2017-08-21-first-complete-run-moses-experiment-management-system %})), I wanted to translate ("decode") some German sentences to see with my own eyes how well my new MT engine is working. However, I immediately got an error when attempting to run the Moses decoder:
 
 {% highlight shell %}
 gary@moses:~/workspace/experiment$ ~/workspace/mosesdecoder/bin/moses -tt -f ~/workspace/experiment/tuning/moses.tuned.ini.3
@@ -128,6 +128,8 @@ Now I can try to translates some German sentences into English by running the de
 ~/workspace/mosesdecoder/bin/moses -f ~/workspace/experiment/tuning/moses.tuned.ini.3
 ~/workspace/mosesdecoder/bin/moses -tt -f ~/workspace/experiment/tuning/moses.tuned.ini.3
 {% endhighlight %}
+
+### Translation output from the engine
 
 Here are a few sample sentences from online news in German. Clearly I need to try with a larger parallel corpus as my next step.
 

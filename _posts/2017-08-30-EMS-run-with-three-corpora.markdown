@@ -4,6 +4,9 @@ title:  "EMS run with three corpora (part 1)"
 date:   2017-08-30 10:52:00 +0300
 categories: moses
 ---
+
+As I mentioned in my [current priorities]({% post_url 2017-08-25-current-priorities %}), I ran my first experiment with only about 178k sentence pairs. Now I want to try a substantially larger data set. The “news” data set for the WMT 17 machine translation conference seems like a good choice.
+
 I went to bed and the Moses EMS was running on my server but it crashed in the night. Here is the end of the last error file `~/workspace/experiment/steps/4/TRAINING_run-giza.4.STDERR` that was generated:
 
 {% highlight shell %}

@@ -10,7 +10,7 @@ Now that I have got the [EMS running]({% post_url 2017-08-21-first-complete-run-
 
 * Run the EMS with a larger German-English data set
 
-  I ran my first experiment with only about 178k sentence pairs. Now I want to try a substantially larger data set. The "news" data set for the [WMT 17 machine translation conference](http://www.statmt.org/wmt17/translation-task.html) seems like a good choice.
+  I ran my first experiment with only about 178k sentence pairs. Now I want to try a substantially larger data set. The "news" data set for the [WMT 17 machine translation conference](http://www.statmt.org/wmt17/translation-task.html) seems like a good choice. ([DONE]({% post_url 2017-08-30-EMS-run-with-three-corpora %}))
 
 * Get the EMS graph generation working 
 

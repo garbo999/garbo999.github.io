@@ -22,6 +22,10 @@ So the current run represents an increase in sentence pairs by a factor of about
 
 ### Translation output from the new engine
 
+Here are some more or less randomly selected example sentences translated by the new engine. I am going to start including my (subjective) rating of the adequacy and fluency on a scale of 1 to 5. This rating is discussed in Section 8.1.1 of [Statistical Machine Translation](http://www.statmt.org/book/) by Phillip Koehn.
+
+I also think it would be useful to introduce a *post-editable* criterion (also on a scale of 1 to 5). This is important information on whether the translation is useful for translators working to produce human quality output.
+
 #### Example 1
 
 German: 
@@ -30,7 +34,9 @@ German:
 English: 
 > 96 % of the Muslims feel connected to Germany (previously: 96 % of the Muslims feel connected Germany)
 
-Only a small improvement, but now the translation is almost perfect. I would delete *the* from *the Muslims*.
+Only a small improvement in fluency, but now the translation is almost perfect. I would delete *the* from *the Muslims*.
+
+(adequacy = 5/5, fluency = 4/5)
 
 #### Example 2
 
@@ -42,6 +48,8 @@ English:
 
 A major improvement with two previously unknown words now translated. The only problem is that *missing* is in the wrong place.
 
+(adequacy = 5/5, fluency = 3/5)
+
 #### Example 3
 
 German: 
@@ -51,6 +59,8 @@ English:
 > A huge Felsabbruch has eight Deutsche, Austrian and Swiss hiking in the Swiss Alps by surprise (previously: One powerful Felsabbruch has eight Germans, Austrians, and Swiss in Wandern in the Swiss Alps by surprise.)
 
 *Felsabbruch* and *Deutsche* are still unknown words here but the translated did improve somewhat.
+
+(adequacy = 4/5, fluency = 2/5)
 
 #### Example 4 (new from [www.tagesschau.de](http://www.tagesschau.de))
 
@@ -92,7 +102,7 @@ German:
 English: 
 > North Korea has South Korean information, not a first to further identifizierendes floor from its capital Pyongyang about Japan fired across. 
 
-(My translation: "According to South Korean sources, North Korea has fired a missle that has not yet been further identified from its capital Pyongyang over Japan.")
+(My translation: "According to South Korean sources, North Korea has fired a missle, not yet further identified, from its capital Pyongyang over Japan.")
 
 (adequacy = 3/5, fluency = 1/5)
 

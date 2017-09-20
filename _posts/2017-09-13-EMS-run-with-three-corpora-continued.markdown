@@ -21,7 +21,7 @@ First, the scores for the engine:
 test: 18.20 (1.018) BLEU-c ; 19.25 (1.018) BLEU
 {% endhighlight %}
 
-These BLEU scores are almost 2 points higher than [my first EMS run]({% post_url 2017-08-21-first-complete-run-moses-experiment-management-system %}) with only one corpus. But still not near the results from the [baseline system](http://www.statmt.org/moses/?n=Moses.Baseline). Perhaps the baseline system (French-English) was cherry-picked for the good scores!?
+These BLEU scores are almost 2 points higher than [my first EMS run]({% post_url 2017-08-21-first-complete-run-moses-experiment-management-system %}) with only one corpus. But still nowhere near the results from the [baseline system](http://www.statmt.org/moses/?n=Moses.Baseline). Perhaps the baseline system (French-English) was cherry-picked for the good scores!?
 
 Here is the final Moses graph from this EMS run:
 
